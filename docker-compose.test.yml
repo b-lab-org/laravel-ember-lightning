@@ -27,8 +27,8 @@ nginx:
     - "81:80"
     - "444:443"
   links:
-    - php
-    - redis
+    - php:php
+    - redis:redis
   volumes:
     - ./docker/ssl/:/data/config/ssl
     - ./docker/sites/:/data/config/sites
@@ -59,7 +59,7 @@ codeception:
     - data
   links:
     - redis:redis
-    - nginx:api.impact.dev
+    - nginx:ember.impact.dev
     - memcached:memcached
   env_file:
-    - docker/env/.test
+    - docker/env/.env.test

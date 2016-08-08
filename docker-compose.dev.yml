@@ -11,6 +11,7 @@ php:
     - "9000:9000"
   links:
     - memcached:memcached
+    - redis:redis
 
 memcached:
   image: impactbot/impact-platform-memcached
@@ -27,8 +28,8 @@ nginx:
     - "80:80"
     - "443:443"
   links:
-    - php
-    - redis
+    - php:php
+    - redis:redis
   volumes:
     - ./docker/ssl/:/data/config/ssl
     - ./docker/sites/:/data/config/sites
