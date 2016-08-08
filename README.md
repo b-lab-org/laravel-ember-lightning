@@ -7,6 +7,14 @@ A Laravel application to facilitate the [Ember Lightning Deploy Strategy](http:/
 ## Getting Started
 * `./impact.sh init`
 
+#### Host File
+```
+sudo nano /etc/hosts
+
+# /etc/hosts
+ember.impact.dev your.ip.address
+```
+
 ### Required `ENV` variables
 * `APP_ENV`: The `environment` of the application, e.g. `dev`, `test`, `production`, etc.
 * `APP_KEY`: Used by the Illuminate encrypter service. Should be a random 32 character string.

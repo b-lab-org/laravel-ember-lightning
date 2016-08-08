@@ -1,0 +1,37 @@
+data:
+  image: impactbot/impact-platform-data
+
+php:
+  image: impactbot/impact-platform-phpfpm
+  volumes_from:
+    - data
+  ports:
+    - "9000:9000"
+  links:
+    - memcached:memcached
+
+memcached:
+  image: impactbot/impact-platform-memcached
+  ports:
+    - "11211:11211"
+  env_file:
+    - docker/env/.dev
+
+nginx:
+  image: impactbot/impact-platform-nginx
+  volumes_from:
+    - data
+  ports:
+    - "80:80"
+    - "443:443"
+  links:
+    - php
+    - redis
+  volumes:
+    - ./docker/ssl/:/data/config/ssl
+    - ./docker/sites/:/data/config/sites
+
+redis:
+  image: impactbot/impact-platform-redis
+  ports:
+    - "6379:6379"
