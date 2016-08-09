@@ -111,7 +111,7 @@ elif [[ $1 = 'test' ]]; then
     # setup test environment - always start from scratch.
     # tear down dev containers - if running
     printf "${OK}tearing down...\n"
-    docker-compose stop
+    eval $compose stop
     remove_containers
     unmount_volumes
     remove_dangling_images

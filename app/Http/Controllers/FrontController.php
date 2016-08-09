@@ -12,20 +12,21 @@ class FrontController extends Controller {
         // was any specific version specified?
         $key = Request::input('key');
 
-        $index = null;
+        // try and fetch current application or revision
         $emberApp = env('EMBER_APP');
         try {
             $index = empty($key) ? "$emberApp:" . $redis->get("$emberApp:current") : $key;
+
+            // fetch app contents
+            $application = $redis->get($index);
+            if (empty($application)) {
+                return trans('errors.redis.default');
+            }
+
+            return $application;
+
         } catch (\Exception $e) {
             return trans('errors.redis.default');
         }
-
-        // fetch app contents
-        $application = $redis->get($index);
-        if (empty($application)) {
-            return trans('errors.redis.default');
-        }
-
-        return $application;
     }
 }
