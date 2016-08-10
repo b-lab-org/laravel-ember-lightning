@@ -8,7 +8,7 @@ php:
   volumes_from:
     - data
   ports:
-    - "9000:9000"
+    - "9001:9000"
   links:
     - memcached:memcached
     - redis:redis
@@ -16,7 +16,7 @@ php:
 memcached:
   image: impactbot/impact-platform-memcached
   ports:
-    - "11211:11211"
+    - "11212:11211"
   env_file:
     - docker/env/.env.dev
 
@@ -25,8 +25,8 @@ nginx:
   volumes_from:
     - data
   ports:
-    - "80:80"
-    - "443:443"
+    - "81:80"
+    - "444:443"
   links:
     - php:php
     - redis:redis
@@ -37,7 +37,7 @@ nginx:
 redis:
   image: impactbot/impact-platform-redis
   ports:
-    - "6379:6379"
+    - "6380:6379"
 
 artisan:
   image: impactbot/impact-platform-artisan
