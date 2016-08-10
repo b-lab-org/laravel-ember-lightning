@@ -8,10 +8,13 @@ class_name: FunctionalTester
 modules:
     enabled:
       - \Helper\Functional
-      - Laravel5
+      - PhpBrowser
       - Redis
+      - Asserts
     config:
       Redis:
-        host: redis
+        host: 'redis'
         port: 6379
         database: 0
+      PhpBrowser:
+        url: 'https://ember.impact.dev'

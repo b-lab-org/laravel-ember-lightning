@@ -1,4 +1,4 @@
-# Laravel Ember Lightning
+# Laravel Ember Lightning [![Code Climate](https://codeclimate.com/github/b-lab-org/laravel-ember-lightning/badges/gpa.svg)](https://codeclimate.com/github/b-lab-org/laravel-ember-lightning)
 A Laravel application to facilitate the [Ember Lightning Deploy Strategy](http://ember-cli-deploy.com/docs/v0.6.x/the-lightning-strategy/)
 
 ## Prerequisites

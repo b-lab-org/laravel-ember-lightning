@@ -15,7 +15,7 @@ memcached:
   ports:
     - "11211:11211"
   env_file:
-    - docker/env/.dev
+    - docker/env/.env.dev
 
 nginx:
   image: impactbot/impact-platform-nginx
