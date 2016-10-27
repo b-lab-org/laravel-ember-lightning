@@ -3,6 +3,13 @@ engines:
         enabled: true
     phpmd:
         enabled: true
+        checks:
+            CleanCode/StaticAccess:
+                enabled: false
+            Naming/LongVariable:
+                enabled: false
+            Naming/ShortVariable:
+                enabled: false
 ratings:
     paths:
         - "**.php"
@@ -10,6 +17,7 @@ exclude_paths:
     - "bootstrap/*"
     - "config/*"
     - "database/*"
-    - "docker/*"
+    - "platform/*"
     - "public/*"
     - "storage/*"
+    - "tests/*"
