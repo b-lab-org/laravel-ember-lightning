@@ -69,7 +69,7 @@ if [[ $1 = 'init' ]]; then
     docker-compose -f $DEV_CONFIG up -d
 
     # get dependencies
-    docker-compose -f $DEV_CONFIG run composer update
+    docker-compose -f $DEV_CONFIG run composer install
 
     # ready
     printf "${OK}ready for lightning deployments...\033[0;0m\n"
@@ -126,7 +126,7 @@ elif [[ $1 = 'test' ]]; then
     # get env.test, composer update and start up test environment
     printf "${START}building test environment...\n"
     cp docker/env/.env.test .env
-    eval $compose run composer update
+    eval $compose run composer install
     eval $compose up -d
     printf "${OK}done\n"
 
