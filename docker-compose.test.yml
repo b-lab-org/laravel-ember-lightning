@@ -18,7 +18,7 @@ memcached:
   ports:
     - "11212:11211"
   env_file:
-    - docker/env/.env.dev
+    - docker/env/.env.test
 
 nginx:
   image: impactbot/impact-platform-nginx
@@ -47,7 +47,7 @@ artisan:
     - redis:redis
     - memcached:memcached
   env_file:
-    - docker/env/.env.dev
+    - docker/env/.env.test
 
 composer:
   image: impactbot/impact-platform-composer
