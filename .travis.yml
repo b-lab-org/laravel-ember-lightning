@@ -18,3 +18,5 @@ before_script:
 script:
     - ./impact.sh test
     - docker-compose logs
+    - cat ./data/www/storage/logs/access.nginx.log
+    - cat ./data/www/storage/logs/error.nginx.log
