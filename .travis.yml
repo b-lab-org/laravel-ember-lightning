@@ -16,7 +16,5 @@ before_script:
     - sudo chmod -R 777 storage/
 
 script:
-    - ./impact.sh test
+    - ./impact.sh test --fail-fast-with-output
     - docker-compose logs
-    - cat /data/www/storage/logs/access.nginx.log
-    - cat /data/www/storage/logs/error.nginx.log
