@@ -131,9 +131,6 @@ elif [[ $1 = 'test' ]]; then
     eval $compose up -d
     printf "${OK}done\n"
 
-	docker-compose -f $DEV_CONFIG run artisan cache:clear
-	docker-compose -f $DEV_CONFIG run composer dump-autoload
-
     # kick off tests
     printf "${START}running tests...\n"
     eval $compose run codeception run $2 $3 $4 --json
