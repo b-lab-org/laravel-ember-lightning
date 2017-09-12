@@ -13,10 +13,10 @@ env:
         - DEBIAN_FRONTEND=noninteractive
 
 before_script:
-    - ./impact.sh artisan cache:clear
     - sudo chmod -R 777 ./storage
-    - ./impact.sh composer dump-autoload
 
 script:
+    - ./impact.sh artisan cache:clear
+    - ./impact.sh composer dump-autoload
     - ./impact.sh test
     - cat storage/logs/laravel*.log
