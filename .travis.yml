@@ -16,7 +16,4 @@ before_script:
     - sudo chmod -R 777 ./storage
 
 script:
-    - ./impact.sh artisan cache:clear
-    - ./impact.sh composer dump-autoload
     - ./impact.sh test
-    - cat storage/logs/laravel*.log
