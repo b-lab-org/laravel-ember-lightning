@@ -16,5 +16,6 @@ before_script:
     - sudo chmod -R 777 storage/
 
 script:
-    - ./impact.sh test --fail-fast-with-output
+    - ./impact.sh test
     - docker-compose logs
+    - cat storage/logs/laravel*.log
