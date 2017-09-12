@@ -11,8 +11,6 @@ services:
 env:
     global:
         - DEBIAN_FRONTEND=noninteractive
-    matrix:
-        - DOCKER_COMPOSE_VERSION=1.7.1
 
 before_install:
     - sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install docker-ce -y
