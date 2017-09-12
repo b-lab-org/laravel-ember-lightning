@@ -3,7 +3,7 @@ language: php
 php:
   - '5.6'
 
-sudo: required
+sudo: false
 
 services:
   - docker
@@ -13,9 +13,10 @@ env:
         - DEBIAN_FRONTEND=noninteractive
 
 before_script:
-    - chmod -R 777 ./storage
+    - ./impact.sh artisan cache:clear
+    - sudo chmod -R 777 ./storage
+    - ./impact.sh composer dump-autoload
 
 script:
     - ./impact.sh test
-    - docker-compose logs
     - cat storage/logs/laravel*.log

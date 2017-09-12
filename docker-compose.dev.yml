@@ -49,3 +49,13 @@ services:
     image: impactbot/impact-platform-composer
     volumes_from:
       - data
+
+  artisan:
+    image: impactbot/impact-platform-php
+    volumes_from:
+      - data
+    depends_on:
+      - memcached
+    entrypoint:
+      - php
+      - artisan
