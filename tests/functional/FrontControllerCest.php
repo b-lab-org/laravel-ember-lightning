@@ -90,4 +90,15 @@ class FrontControllerCest
         $h1 = $I->grabTextFrom('h1');
         $I->assertEquals($h1, 'Welcome to Ember');
     }
+
+	public function fetchUrlEncodedString(FunctionalTester $I)
+    {
+        $I->wantTo('Fetch the latest version that isn\'t the root');
+        $I->amOnPage('/another/url/with%2Bencoded%40strings.net');
+        $I->seeResponseCodeIs(200);
+        $I->seeInTitle('Test App');
+        $I->seeElement('h1');
+        $h1 = $I->grabTextFrom('h1');
+        $I->assertEquals($h1, 'Welcome to Ember');
+    }
 }

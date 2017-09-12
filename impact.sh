@@ -126,7 +126,7 @@ elif [[ $1 = 'test' ]]; then
     # get env.test, composer update and start up test environment
     printf "${START}building test environment...\n"
     cp docker/env/.env.test .env
-    eval $compose run composer install
+ 	eval $compose run composer install
     eval $compose up -d
     printf "${OK}done\n"
 

@@ -1,3 +1,6 @@
+## 0.0.4
+* [Support] Expand regex to include broader range of urls [#150857294](https://www.pivotaltracker.com/story/show/150857294)
+
 ## 0.0.3
 * [Support] Redirect any http traffic to https [#138343709](https://www.pivotaltracker.com/story/show/138343709)
 
