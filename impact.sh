@@ -135,6 +135,13 @@ elif [[ $1 = 'test' ]]; then
     eval $compose run codeception run $2 $3 $4 --json
     printf "${OK}tests complete.\n"
 
+    if [[ $2 = '--fail-fast-with-output' ]]; then
+        arg2='--fail-fast'
+        showOutput=1
+    else
+        arg2=$2
+    fi
+
     # exit with proper status based on test results
     ERRORS="$(grep -o '\"status\": \"error\"' tests/_output/report.json | wc -l)"
     FAILS="$(grep -o '\"status\": \"fail\"' tests/_output/report.json | wc -l)"
