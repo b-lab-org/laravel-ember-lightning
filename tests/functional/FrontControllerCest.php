@@ -41,7 +41,7 @@ class FrontControllerCest
         $versionHtml .= '<body><h1>Welcome to Ember - Revision Commit</h1></body>';
         $versionHtml .= '</html>';
 
-        $this->_versionCommit = "2.0.1+e727bae0";
+        $this->_versionCommit = "2.0.1%2Be727bae0";
         $I->haveInRedis('string', "$this->_appKey:$this->_versionCommit", $versionHtml);
     }
 
