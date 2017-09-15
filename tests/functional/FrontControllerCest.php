@@ -41,7 +41,7 @@ class FrontControllerCest
         $versionHtml .= '<body><h1>Welcome to Ember - Revision Commit</h1></body>';
         $versionHtml .= '</html>';
 
-        $this->_versionCommit = "2.0.1%2Be727bae0";
+        $this->_versionCommit = "2.0.1+e727bae0";
         $I->haveInRedis('string', "$this->_appKey:$this->_versionCommit", $versionHtml);
     }
 
@@ -116,7 +116,8 @@ class FrontControllerCest
     public function fetchWithRevisionKey(FunctionalTester $I)
     {
         $I->wantTo('Fetch a known version key of the app');
-        $I->amOnPage("/?key=$this->_appKey:$this->_versionCommit");
+        $version = str_replace('+', '%2B', $this->_versionCommit);
+        $I->amOnPage("/?key=$this->_appKey:$version");
         $I->seeResponseCodeIs(200);
         $I->seeInTitle('Test App');
         $I->seeElement('h1');
