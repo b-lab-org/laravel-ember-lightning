@@ -10,7 +10,7 @@ class FrontController extends Controller {
         $redis = \Illuminate\Support\Facades\Redis::connection();
 
         // was any specific version specified?
-        $key = Request::input('key');
+        $key = str_replace(' ', '+', trim(Request::input('key')));
 
         // try and fetch current application or revision
         $emberApp = env('EMBER_APP');

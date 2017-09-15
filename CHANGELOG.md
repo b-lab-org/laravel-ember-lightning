@@ -1,3 +1,6 @@
+## 0.0.5
+* [Support] Handle versioned commits in addition to SHA commits.
+
 ## 0.0.4
 * [Support] Expand regex to include broader range of urls [#150857294](https://www.pivotaltracker.com/story/show/150857294)
 
