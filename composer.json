@@ -2,7 +2,7 @@
     "name": "b-lab-org/laravel-ember-lightning",
     "description": "A Laravel application to facilitate the Ember Lightning Deploy Strategy",
     "keywords": ["laravel", "ember", "ember-cli-deploy", "redis"],
-    "version": "0.0.4",
+    "version": "0.0.5",
     "license": "MIT",
     "type": "project",
     "require": {

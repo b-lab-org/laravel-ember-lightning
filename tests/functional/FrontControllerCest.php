@@ -7,6 +7,7 @@ class FrontControllerCest
     private $_appKey;
     private $_currentSha;
     private $_updatedSha;
+    private $_versionCommit;
 
     public function _before(FunctionalTester $I)
     {
@@ -32,6 +33,16 @@ class FrontControllerCest
 
         $this->_updatedSha = 'xyz0000';
         $I->haveInRedis('string', "$this->_appKey:$this->_updatedSha", $shaHtml);
+
+        // the "app:revision+commit" of an ember application
+        $versionHtml = '<!DOCTYPE html>';
+        $versionHtml .= '<html>';
+        $versionHtml .= '<head><title>Test App</title></head>';
+        $versionHtml .= '<body><h1>Welcome to Ember - Revision Commit</h1></body>';
+        $versionHtml .= '</html>';
+
+        $this->_versionCommit = "2.0.1+e727bae0";
+        $I->haveInRedis('string', "$this->_appKey:$this->_versionCommit", $versionHtml);
     }
 
     public function _after(FunctionalTester $I)
@@ -91,7 +102,7 @@ class FrontControllerCest
         $I->assertEquals($h1, 'Welcome to Ember');
     }
 
-	public function fetchUrlEncodedString(FunctionalTester $I)
+    public function fetchUrlEncodedString(FunctionalTester $I)
     {
         $I->wantTo('Fetch the latest version that isn\'t the root');
         $I->amOnPage('/another/url/with%2Bencoded%40strings.net');
@@ -100,5 +111,17 @@ class FrontControllerCest
         $I->seeElement('h1');
         $h1 = $I->grabTextFrom('h1');
         $I->assertEquals($h1, 'Welcome to Ember');
+    }
+
+    public function fetchWithRevisionKey(FunctionalTester $I)
+    {
+        $I->wantTo('Fetch a known version key of the app');
+        $version = str_replace('+', '%2B', $this->_versionCommit);
+        $I->amOnPage("/?key=$this->_appKey:$version");
+        $I->seeResponseCodeIs(200);
+        $I->seeInTitle('Test App');
+        $I->seeElement('h1');
+        $h1 = $I->grabTextFrom('h1');
+        $I->assertEquals($h1, 'Welcome to Ember - Revision Commit');
     }
 }
